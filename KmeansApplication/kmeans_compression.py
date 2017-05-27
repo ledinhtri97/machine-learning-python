@@ -3,19 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans
 
-# Load image
-img = mpimg.imread('baithi.jpg')
+img = mpimg.imread('gau.JPG')
 plt.imshow(img)
+imgplot = plt.imshow(img)
 plt.axis('off')
 plt.show()
 
-# Img have [y, x, z] with z = 3
-# y = height, x= width
-# Convert image to 1 matrix with N pixel with 3 column for Red, Green, Blue
 X = img.reshape((img.shape[0]*img.shape[1], img.shape[2]))
 
-# K = 3 cluster
-for K in [2]:
+for K in [2, 5, 10, 15, 20]:
     kmeans = KMeans(n_clusters=K).fit(X)
     label = kmeans.predict(X)
 
